@@ -22,7 +22,8 @@ export class AccountComponent implements OnInit {
     createAccounts: { active: false, status: false, completed: false }
   };
 
-  flag = false;
+  sourceIsCreate = false;
+  destinationIsCreate = false;
 
   constructor() {
     this.account = {};
@@ -35,7 +36,13 @@ export class AccountComponent implements OnInit {
   createAndGetSourceAccount() {
     this.sourceAccount = this.createAccount();
     this.getAccount(this.sourceAccount.publicKey);
-    this.flag = true;
+    this.sourceIsCreate = true;
+  }
+
+  createAndGetDestinationAccount() {
+    this.destinationAccount = this.createAccount();
+    this.getAccount(this.sourceAccount.publicKey);
+    this.destinationIsCreate = true;
   }
 
   createAccount() {
