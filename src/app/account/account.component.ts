@@ -8,7 +8,12 @@ import * as StellarSdk from "stellar-sdk";
 })
 export class AccountComponent implements OnInit {
   account: any;
+  breakpoint: number;
   sourceAccount: { publicKey: string; privateKey: string } = {
+    publicKey: "",
+    privateKey: ""
+  };
+  oracleAccount: { publicKey: string; privateKey: string } = {
     publicKey: "",
     privateKey: ""
   };
@@ -23,12 +28,14 @@ export class AccountComponent implements OnInit {
   };
 
   sourceIsCreate = false;
+  oracleIsCreate = false;
   destinationIsCreate = false;
 
   constructor() {
     this.account = {};
     this.account.signers = [];
     this.account.balances = [{ balance: 0 }];
+    this.account.sequence = 0;
   }
 
   ngOnInit() {}
@@ -37,6 +44,12 @@ export class AccountComponent implements OnInit {
     this.sourceAccount = this.createAccount();
     this.getAccount(this.sourceAccount.publicKey);
     this.sourceIsCreate = true;
+  }
+
+  createAndGetOracleAccount() {
+    this.oracleAccount = this.createAccount();
+    this.getAccount(this.oracleAccount.publicKey);
+    this.oracleIsCreate = true;
   }
 
   createAndGetDestinationAccount() {
@@ -74,6 +87,7 @@ export class AccountComponent implements OnInit {
         this.account = {};
         this.account.signers = [];
         this.account.balances = [{ balance: 0 }];
+        this.account.sequence = 0;
       });
   }
 }

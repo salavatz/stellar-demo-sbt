@@ -8,7 +8,7 @@ import { MaterialModule } from "./material.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { AccountComponent } from "./account/account.component";
-import { RoutingModule } from "./routing/routing.module";
+import { MultisigComponent } from "./multisig/multisig.component";
 import { MatGridListModule } from "@angular/material/grid-list";
 
 @NgModule({
@@ -16,14 +16,14 @@ import { MatGridListModule } from "@angular/material/grid-list";
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    AccountComponent
+    AccountComponent,
+    MultisigComponent
   ],
   imports: [
     BrowserModule,
     MaterialModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    RoutingModule,
     MatGridListModule
   ],
   providers: [],
